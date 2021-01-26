@@ -12,7 +12,6 @@ public class StreetsFabric {
             String name = String.format("%s-ая улица", i);
             Street street = new Street(location, name);
             streets.add(street);
-        }
-        return streets;
+        }return streets;
     }
 }

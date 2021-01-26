@@ -13,6 +13,7 @@ public abstract class Character {
     private String sex = "male";
     private LivingBuilding homeBuilding;
     private Building currentBuilding;
+    private boolean inHouse = true;
 
     protected Character(String name) {
         this(Location.MOMMIE_DOL, name);
@@ -45,7 +46,7 @@ public abstract class Character {
 
     public void setHomeBuilding(LivingBuilding homeBuilding) {
         this.homeBuilding = homeBuilding;
-        currentBuilding = homeBuilding;
+        setCurrentBuilding(homeBuilding);
     }
 
     public Building getCurrentBuilding() {
@@ -70,6 +71,38 @@ public abstract class Character {
 
     public Character getFriend(int position) {
         return friends.get(position);
+    }
+
+    public void visitRandomFriend() {
+        Character character = getRandomFriend();
+        System.out.printf("%s решил встретиться с %s.%n", getName(), character.getName());
+        if (!character.getCurrentBuilding().equals(getCurrentBuilding())) {
+            visitBuilding(character.getCurrentBuilding());
+        }
+        else System.out.println("Но для встречи с другом никуда не пришлось идти!");
+    }
+
+    public void visitBuilding(Building building) {
+        if (inHouse) goInOut();
+        goToStreet(building.getStreet());
+        setCurrentBuilding(building);
+        goInOut();
+    }
+
+    public void goToStreet(Street street) {
+        System.out.printf("%s решил прогуляться до %s.%n", getName(), street.toString());
+    }
+
+    public void goInOut() {
+        if (inHouse) {
+            System.out.print(getName() + " вышел из ");
+            inHouse = false;
+        }
+        else {
+            System.out.print(getName() + " зашёл в ");
+            inHouse = true;
+        }
+        System.out.println(getCurrentBuilding() + ".");
     }
 
     public Character getRandomFriend() {

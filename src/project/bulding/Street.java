@@ -5,7 +5,8 @@ public class Street {;
     private String name;
 
     public Street(Location location, String name) {
-
+        this.location = location;
+        this.name = name;
     }
 
     public Location getLocation() {

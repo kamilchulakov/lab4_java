@@ -30,7 +30,7 @@ public class Troll extends Character{
 
     @Override
     public void summerAction() {
-        wasteTime();
+        visitRandomFriend();
     }
 
     @Override
