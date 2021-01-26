@@ -57,7 +57,7 @@ public class BasicTimer implements Timer {
            setSeason(Season.SUMMER);
        }
        else if (getSeason() == Season.SUMMER) {
-           System.out.printf("%s", ConsoleColors.YELLOW_BACKGROUND);
+           System.out.printf("%s", ConsoleColors.WHITE_BACKGROUND);
            setSeason(Season.AUTUMN);
        }
        else {
