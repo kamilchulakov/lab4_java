@@ -106,14 +106,17 @@ public abstract class Character {
                 if (things.size() > 0) {
                     for (Thing thing: things) {
                         System.out.printf("%s нашёл на %s %s.%n", getName(), furniture, thing.getName());
-                        if (thing.getName().equals("кружка чая")) {
+                        if (thing.getThingType().equals(ThingType.DRINK)) {
                             // лучше бы Thing,type использовал!!
                             System.out.printf("%s выпил %s.%n", getName(), thing.getName());
                             things.remove(thing);
                         }
-                        else if (thing.getName().equals("печенье")) {
+                        else if (thing.getThingType().equals(ThingType.FOOD)) {
                             System.out.printf("%s съел %s.%n", getName(), thing.getName());
                             things.remove(thing);
+                        }
+                        else if (thing.getThingType().equals(ThingType.TOY)) {
+                            System.out.printf("%s поиграл с %s.%n", getName(), thing.getName());
                         }
                     }
                 }

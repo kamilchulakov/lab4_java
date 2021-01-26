@@ -11,10 +11,11 @@ public class Furniture {
         this.name = name;
         things = new ArrayList<>();
         if (name.equals("стол")) {
-            things.add(new Thing("печенье"));
-            things.add(new Thing("кружка чая"));
+            things.add(new Thing("печенье", ThingType.FOOD));
+            things.add(new Thing("кружка чая", ThingType.DRINK));
         }
-
+        if (name.equals("кровать")) things.add(new Thing("подушка", ThingType.TOY));
+        if (name.equals("ванна")) things.add(new Thing("резиновая уточка", ThingType.TOY));
     }
 
     public ArrayList<Thing> getThings() {
