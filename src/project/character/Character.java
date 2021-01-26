@@ -7,7 +7,7 @@ import project.bulding.*;
 
 public abstract class Character {
     private String name;
-    private ArrayList<Character> friends = new ArrayList<Character>();
+    private ArrayList<Character> friends = new ArrayList<>();
     private int happiness = 0;
     private Location location;
     private String sex = "male";
@@ -102,9 +102,23 @@ public abstract class Character {
             for (Furniture furniture: furnitures) {
                 System.out.printf("%s обнаружил %s.%n",getName(), furniture);
                 if (furniture.getName().equals("унитаз")) makePoo();
+                ArrayList<Thing> things = furniture.getThings();
+                if (things.size() > 0) {
+                    for (Thing thing: things) {
+                        System.out.printf("%s нашёл на %s %s.%n", getName(), furniture, thing.getName());
+                        if (thing.getName().equals("кружка чая")) {
+                            // лучше бы Thing,type использовал!!
+                            System.out.printf("%s выпил %s.%n", getName(), thing.getName());
+                            things.remove(thing);
+                        }
+                        else if (thing.getName().equals("печенье")) {
+                            System.out.printf("%s съел %s.%n", getName(), thing.getName());
+                            things.remove(thing);
+                        }
+                    }
+                }
             }
         }
-        System.out.println("А скоро " + getName() + " научиться находить предметы!");
     }
 
     public void goInOut() {
