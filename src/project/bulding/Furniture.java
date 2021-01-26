@@ -1,5 +1,7 @@
 package project.bulding;
 
+import java.util.Arrays;
+
 public class Furniture {
     private Thing[] things;
     private String name;
@@ -22,5 +24,10 @@ public class Furniture {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

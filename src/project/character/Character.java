@@ -87,10 +87,24 @@ public abstract class Character {
         goToStreet(building.getStreet());
         setCurrentBuilding(building);
         goInOut();
+        if ((int) (Math.random() * 5) > 3) exploreCurrentBuilding();
     }
 
     public void goToStreet(Street street) {
         System.out.printf("%s решил прогуляться до %s.%n", getName(), street.toString());
+    }
+
+    public void exploreCurrentBuilding() {
+        System.out.printf("%s решил исследовать текущее здание.%n", getName());
+        Room[] rooms = getCurrentBuilding().getRooms();
+        for (Room room: rooms) {
+            ArrayList<Furniture> furnitures = room.getFurnitures();
+            for (Furniture furniture: furnitures) {
+                System.out.printf("%s обнаружил %s.%n",getName(), furniture);
+                if (furniture.getName().equals("унитаз")) makePoo();
+            }
+        }
+        System.out.println("А скоро " + getName() + " научиться находить предметы!");
     }
 
     public void goInOut() {
@@ -125,6 +139,10 @@ public abstract class Character {
 
     public String getSex() {
         return sex;
+    }
+
+    private void makePoo() {
+        System.out.println(getName() + " использовал унитаз по назначению.");
     }
 
     public int getHappiness() {
